@@ -5,26 +5,11 @@ use yew::prelude::*;
 enum Route {
     #[at("/")]
     Home,
-    #[at("/secure")]
-    Secure,
     #[at("/portfolio")]
     Portfolio,
     #[not_found]
     #[at("/404")]
     NotFound,
-}
-
-#[function_component(Secure)]
-fn secure() -> Html {
-    let navigator = use_navigator().unwrap();
-
-    let onclick = Callback::from(move |_| navigator.push(&Route::Home));
-    html! {
-        <div>
-            <h1>{ "Secure" }</h1>
-            <button {onclick}>{ "Go Home" }</button>
-        </div>
-    }
 }
 
 #[function_component(PortfolioItem)]
@@ -47,10 +32,7 @@ fn portfolio_item() -> Html {
 
 fn switch(routes: Route) -> Html {
     match routes {
-        Route::Home => html! { <h1>{ "Home" }</h1> },
-        Route::Secure => html! {
-            <Secure />
-        },
+        Route::Home => html! { <Redirect<Route> to={Route::Portfolio} />},
         Route::Portfolio => html! { <PortfolioItem/> },
         Route::NotFound => html! { <h1>{ "404" }</h1> },
     }
