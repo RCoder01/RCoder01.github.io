@@ -23,9 +23,9 @@ fn portfolio_item() -> Html {
             src="https://www.youtube.com/embed/XHo4Qe9vRPY">
             </iframe>
             </div>
-            <p>{"This project was made with Unreal Engine 5, the industry standard engine for high performance and high visual quality games. We used their Blueprint programming language to add dozens of interactive features"}</p>
-            <p>{"This was made with teammate Andrew Hutchinson, using JIRA to ensure we were always up to date on each others' progress"}</p>
-            <p>{"This video was recorded on a Meta Quest Pro"}</p>
+            <p>{"This project was made with Unreal Engine 5, the industry standard engine for high performance and high visual quality games. We used their Blueprint programming language to add dozens of interactive features."}</p>
+            <p>{"This was made with teammate Andrew Hutchinson, using JIRA to ensure we were always up to date on each others' progress."}</p>
+            <p>{"This video was recorded on a Meta Quest Pro."}</p>
         </div>
     }
 }
