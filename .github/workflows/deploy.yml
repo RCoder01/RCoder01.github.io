@@ -36,7 +36,6 @@ jobs:
           mkdir -p ./target/wasm32-unknown-unknown
       - name: Build the Rust WASM app and all of its assets
         run: trunk build --public-url ${{ github.event.repository.name }} --release
-
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
@@ -47,7 +46,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    
+
     permissions:
       pages: write
       id-token: write
