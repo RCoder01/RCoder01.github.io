@@ -42,8 +42,8 @@ This was made with teammate Andrew Hutchinson, using JIRA to ensure we were alwa
         },
         PortfolioDescriptor {
             project_name: "NeuroFitFusion+".to_string(),
-            video_height: 310,
-            video_width: 800,
+            video_height: 300,
+            video_width: 480,
             video_src: "https://www.youtube.com/embed/4U4b5qfFaV0".to_string(),
             description: r#"This project was made in less than a month using Unreal Engine 5, the industry standard engine for high performance and high visual quality games. We used their Blueprint programming language to add dozens of interactive features.
             This was made with teammates Andrew Hutchinson, Anay Modi, Gerrard Choe, and Zain Zai, using JIRA to ensure we were always up to date on each others' progress.
@@ -53,6 +53,7 @@ This was made with teammate Andrew Hutchinson, using JIRA to ensure we were alwa
     html! {
         <>
             <h1>{"Hi, I'm Arnav"}</h1>
+            <h2>{"I'm a student studying Computer Science at the University of Michigan"}</h2>
             {portfolio_items.iter().map(portfolio_item).collect::<Html>()}
         </>
     }
