@@ -1,3 +1,5 @@
+use std::default::Default;
+
 use yew_router::prelude::*;
 use yew::prelude::*;
 
@@ -12,12 +14,14 @@ enum Route {
     NotFound,
 }
 
+#[derive(Default)]
 struct PortfolioDescriptor {
     project_name: String,
     video_height: u32,
     video_width: u32,
     video_src: String,
     description: String,
+    link: Option<String>,
 }
 
 #[function_component(Portfolio)]
@@ -31,6 +35,7 @@ fn portfolio() -> Html {
             description: r#"This project was made with Unreal Engine 5, the industry standard engine for high performance and high visual quality games. We used their Blueprint programming language to add dozens of interactive features.
 This was made with teammate Andrew Hutchinson, using JIRA to ensure we were always up to date on each others' progress.
 This video was recorded on a Meta Quest Pro."#.to_string(),
+            ..Default::default()
         },
         PortfolioDescriptor {
             project_name: "498 XR P2".to_string(),
@@ -39,6 +44,7 @@ This video was recorded on a Meta Quest Pro."#.to_string(),
             video_src: "https://www.youtube.com/embed/5DlQuCnRHuE".to_string(),
             description: r#"This project was made with Unity in C#, the most popular engine for mobile applications.
 This was made with teammate Andrew Hutchinson, using JIRA to ensure we were always up to date on each others' progress."#.to_string(),
+            ..Default::default()
         },
         PortfolioDescriptor {
             project_name: "NeuroFitFusion+".to_string(),
@@ -48,6 +54,7 @@ This was made with teammate Andrew Hutchinson, using JIRA to ensure we were alwa
             description: r#"This project was made in less than a month using Unreal Engine 5, the industry standard engine for high performance and high visual quality games. We used their Blueprint programming language to add dozens of interactive features.
             This was made with teammates Andrew Hutchinson, Anay Modi, Gerrard Choe, and Zain Zai, using JIRA to ensure we were always up to date on each others' progress.
             This footage was recorded on a Meta Quest Pro."#.to_string(),
+            link: Some("https://zainzai.wixstudio.io/neurofit".to_string()),
         }
     ];
     html! {
@@ -69,6 +76,13 @@ fn portfolio_item(descriptor: &PortfolioDescriptor) -> Html {
                 </iframe>
             </div>
             {descriptor.description.split('\n').map(|s| html! {<p>{s}</p>}).collect::<Html>()}
+            {
+                if let Some(link) = descriptor.link.clone() {
+                    Some(html!{<a href={link}>{"Check out the project website here!"}</a>})
+                } else {
+                    None
+                }
+            }
         </div>
     }
 }
