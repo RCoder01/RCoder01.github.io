@@ -40,6 +40,15 @@ This video was recorded on a Meta Quest Pro."#.to_string(),
             description: r#"This project was made with Unity in C#, the most popular engine for mobile applications.
 This was made with teammate Andrew Hutchinson, using JIRA to ensure we were always up to date on each others' progress."#.to_string(),
         },
+        PortfolioDescriptor {
+            project_name: "NeuroFitFusion+".to_string(),
+            video_height: 310,
+            video_width: 800,
+            video_src: "https://www.youtube.com/embed/4U4b5qfFaV0".to_string(),
+            description: r#"This project was made in less than a month using Unreal Engine 5, the industry standard engine for high performance and high visual quality games. We used their Blueprint programming language to add dozens of interactive features.
+            This was made with teammates Andrew Hutchinson, Anay Modi, Gerrard Choe, and Zain Zai, using JIRA to ensure we were always up to date on each others' progress.
+            This footage was recorded on a Meta Quest Pro."#.to_string(),
+        }
     ];
     html! {
         <>
