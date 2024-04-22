@@ -1,4 +1,4 @@
-use std::default::Default;
+use std::default::{self, Default};
 
 use yew_router::prelude::*;
 use yew::prelude::*;
@@ -28,13 +28,23 @@ struct PortfolioDescriptor {
 fn portfolio() -> Html {
     let portfolio_items = [
         PortfolioDescriptor {
+            project_name: "Moonrise Engine".to_string(),
+            video_height: 300,
+            video_width: 480,
+            video_src: "https://youtu.be/zvnx3Y3nCq4".to_string(),
+            description: r#"I made this cross-platform 3D engine was made with WebGPU (Dawn, WGPU, and Emscripten) as the rendering backend, lua and luabridge, rapidjson, tinygltf, and SDL for window management and audio.
+                The engine supports 3D models in Gltf and has full lua scripting support for model loading, 3d transforms, camera transforms, and gameplay logic"#.to_string(),
+            link: None,
+            ..Default::default()
+        },
+        PortfolioDescriptor {
             project_name: "498 XR P1".to_string(),
             video_height: 310,
             video_width: 800,
             video_src: "https://www.youtube.com/embed/XHo4Qe9vRPY".to_string(),
             description: r#"This project was made with Unreal Engine 5, the industry standard engine for high performance and high visual quality games. We used their Blueprint programming language to add dozens of interactive features.
-This was made with teammate Andrew Hutchinson, using JIRA to ensure we were always up to date on each others' progress.
-This video was recorded on a Meta Quest Pro."#.to_string(),
+                This was made with teammate Andrew Hutchinson, using JIRA to ensure we were always up to date on each others' progress.
+                This video was recorded on a Meta Quest Pro."#.to_string(),
             ..Default::default()
         },
         PortfolioDescriptor {
@@ -43,7 +53,7 @@ This video was recorded on a Meta Quest Pro."#.to_string(),
             video_width: 310,
             video_src: "https://www.youtube.com/embed/5DlQuCnRHuE".to_string(),
             description: r#"This project was made with Unity in C#, the most popular engine for mobile applications.
-This was made with teammate Andrew Hutchinson, using JIRA to ensure we were always up to date on each others' progress."#.to_string(),
+                This was made with teammate Andrew Hutchinson, using JIRA to ensure we were always up to date on each others' progress."#.to_string(),
             ..Default::default()
         },
         PortfolioDescriptor {
@@ -52,9 +62,10 @@ This was made with teammate Andrew Hutchinson, using JIRA to ensure we were alwa
             video_width: 480,
             video_src: "https://www.youtube.com/embed/4U4b5qfFaV0".to_string(),
             description: r#"This project was made in less than a month using Unreal Engine 5, the industry standard engine for high performance and high visual quality games. We used their Blueprint programming language to add dozens of interactive features.
-            This was made with teammates Andrew Hutchinson, Anay Modi, Gerrard Choe, and Zain Zai, using JIRA to ensure we were always up to date on each others' progress.
-            This footage was recorded on a Meta Quest Pro."#.to_string(),
+                This was made with teammates Andrew Hutchinson, Anay Modi, Gerrard Choe, and Zain Zai, using JIRA to ensure we were always up to date on each others' progress.
+                This footage was recorded on a Meta Quest Pro."#.to_string(),
             link: Some("https://zainzai.wixstudio.io/neurofit".to_string()),
+            ..Default::default()
         }
     ];
     html! {
