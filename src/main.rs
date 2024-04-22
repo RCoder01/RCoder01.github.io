@@ -14,6 +14,12 @@ enum Route {
     NotFound,
 }
 
+#[derive(Default, Clone)]
+struct Link {
+    name: String,
+    url: String,
+}
+
 #[derive(Default)]
 struct PortfolioDescriptor {
     project_name: String,
@@ -21,7 +27,7 @@ struct PortfolioDescriptor {
     video_width: u32,
     video_src: String,
     description: String,
-    link: Option<String>,
+    link: Option<Link>,
 }
 
 #[function_component(Portfolio)]
@@ -34,7 +40,10 @@ fn portfolio() -> Html {
             video_src: "https://www.youtube.com/embed/zvnx3Y3nCq4".to_string(),
             description: r#"I made this cross-platform 3D engine was made in C++ with WebGPU (Dawn, WGPU, and Emscripten) as the rendering backend, lua and luabridge, glm, rapidjson, tinygltf, and SDL for window management and audio.
                 The engine supports 3D models in gltf and has full lua scripting support for model loading, 3d transforms, camera transforms, and gameplay logic"#.to_string(),
-            link: Some("/game_engine_webgpu.html".to_string()),
+            link: Some(Link {
+                name: "Try it out here!".to_string(),
+                url: "/game_engine_webgpu.html".to_string()
+            }),
             ..Default::default()
         },
         PortfolioDescriptor {
@@ -64,7 +73,10 @@ fn portfolio() -> Html {
             description: r#"This project was made in less than a month using Unreal Engine 5, the industry standard engine for high performance and high visual quality games. We used their Blueprint programming language to add dozens of interactive features.
                 This was made with teammates Andrew Hutchinson, Anay Modi, Gerrard Choe, and Zain Zai, using JIRA to ensure we were always up to date on each others' progress.
                 This footage was recorded on a Meta Quest Pro."#.to_string(),
-            link: Some("https://zainzai.wixstudio.io/neurofit".to_string()),
+            link: Some(Link {
+                name: "Check out the project website here!".to_string(),
+                url: "https://zainzai.wixstudio.io/neurofit".to_string(),
+            }),
             ..Default::default()
         }
     ];
@@ -89,7 +101,7 @@ fn portfolio_item(descriptor: &PortfolioDescriptor) -> Html {
             {descriptor.description.split('\n').map(|s| html! {<p>{s}</p>}).collect::<Html>()}
             {
                 if let Some(link) = descriptor.link.clone() {
-                    Some(html!{<a href={link}>{"Check out the project website here!"}</a>})
+                    Some(html!{<a href={link.url}>{link.name}</a>})
                 } else {
                     None
                 }
