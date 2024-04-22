@@ -38,7 +38,8 @@ fn portfolio() -> Html {
             video_height: 300,
             video_width: 480,
             video_src: "https://www.youtube.com/embed/zvnx3Y3nCq4".to_string(),
-            description: r#"I made this cross-platform 3D engine was made in C++ with WebGPU (Dawn, WGPU, and Emscripten) as the rendering backend, lua and luabridge, glm, rapidjson, tinygltf, and SDL for window management and audio.
+            description: r#"I made this cross-platform 3D engine in C++ with WebGPU (Dawn, WGPU, and Emscripten) as the rendering backend, lua and luabridge, glm, rapidjson, tinygltf, and SDL for window management and audio.
+                The project is built with CMake. Source code coming soon!
                 The engine supports 3D models in gltf and has full lua scripting support for model loading, 3d transforms, camera transforms, and gameplay logic"#.to_string(),
             link: Some(Link {
                 name: "Try it out here!".to_string(),
