@@ -43,7 +43,7 @@ fn portfolio() -> Html {
                 The engine supports 3D models in gltf and has full lua scripting support for model loading, 3d transforms, camera transforms, and gameplay logic"#.to_string(),
             link: Some(Link {
                 name: "Try it out here!".to_string(),
-                url: "/game_engine_webgpu.html".to_string()
+                url: "/sigmakart.html".to_string()
             }),
             ..Default::default()
         },

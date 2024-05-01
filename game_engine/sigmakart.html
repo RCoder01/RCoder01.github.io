@@ -16,21 +16,8 @@ div.emscripten_border { border: 1px solid black; }
 /* the canvas *must not* have any border or padding, or mouse coords will be wrong */
 canvas.emscripten { border: 0px none; background-color: black; }
 
-@-webkit-keyframes rotation {
-  from {-webkit-transform: rotate(0deg);}
-  to {-webkit-transform: rotate(360deg);}
-}
-@-moz-keyframes rotation {
-  from {-moz-transform: rotate(0deg);}
-  to {-moz-transform: rotate(360deg);}
-}
-@-o-keyframes rotation {
-  from {-o-transform: rotate(0deg);}
-  to {-o-transform: rotate(360deg);}
-}
-@keyframes rotation {
-  from {transform: rotate(0deg);}
-  to {transform: rotate(360deg);}
+body {
+  overflow: hidden; /* Hide scrollbars */
 }
 
 #status {
@@ -47,11 +34,9 @@ canvas.emscripten { border: 0px none; background-color: black; }
       <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
     <script type='text/javascript'>
       var Module = {
-        print: (function() {
-          return (...args) => {
-            console.log(text);
-          };
-        })(),
+        print: (true, (...args) => {
+          console.log(args.join(" "));
+        }),
         canvas: (() => {
           var canvas = document.getElementById('canvas');
           canvas.addEventListener("webglcontextlost", (e) => { alert('WebGL context lost. You will need to reload the page.'); e.preventDefault(); }, false);
@@ -73,6 +58,14 @@ canvas.emscripten { border: 0px none; background-color: black; }
           if (text) console.error('[post-exception status] ' + text);
         };
       };
+
+      const resizeCanvas = () => {
+        Module.canvas.width = window.innerWidth;
+        Module.canvas.height = window.innerHeight;
+
+        setTimeout(resizeCanvas, 10);
+      };
+      resizeCanvas();
     </script>
     <script async type="text/javascript" src="game_engine_webgpu.js"></script>
   </body>
